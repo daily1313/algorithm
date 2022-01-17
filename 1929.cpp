@@ -7,7 +7,7 @@ int main()
 	
 	int pn=0;
 	
-	int n=100;
+	
 	int a,b;
 	cin>>a>>b;
 	int i;
