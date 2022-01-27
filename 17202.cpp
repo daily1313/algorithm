@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdio>
-#include <vector>
 using namespace std;
 char num[17];
 int main()
@@ -22,5 +21,5 @@ int main()
 		}
 		number--;
 	}
-	printf("%d%d",num[0],num[1]);
+	cout<<(int)num[0]<<(int)num[1]<<endl;
 }
