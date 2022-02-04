@@ -8,6 +8,7 @@ int main()
 		cin>>a[i];
 	}
 	sort(a,a+5);
-	cout<<a[2]<<endl;
-	cout<<(a[0]+a[1]+a[2]+a[3]+a[4])/5<<endl;
+	cout<<(a[0]+a[1]+a[2]+a[3]+a[4])/5<<'\n';
+	cout<<a[2]<<'\n';
+	
 }

@@ -10,7 +10,6 @@ int main()
 	cin>>t;
 	for(int i=0;i<t;i++){
 		cin>>n;
-		vector<int>a(n);
 	for(int i=0;i<n;i++){
 		cin>>a[i];
 	}

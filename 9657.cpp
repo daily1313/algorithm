@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-unsigned long long int dp[1000000000001LL];
+unsigned long long int dp[100];
 int main()
 {
 	dp[1]=1;

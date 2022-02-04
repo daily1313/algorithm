@@ -5,7 +5,7 @@ int main()
 {
 	int a=0;
 	int b,c,d;
-		while(a!=100){
+		while(a!=101){
 			for(int b=2;b<100;b++){
 				for(int c=b+1;c<=100;c++){
 					for(int d=c+1;d<=100;d++){
