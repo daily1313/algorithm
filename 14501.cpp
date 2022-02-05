@@ -1,21 +1,25 @@
 #include <iostream>
 using namespace std;
-unsigned long long int dp[101];
-
+int t[21];
+int p[21];
+int n;
+int ans=0;
+void go(int day,int sum){
+	if(day==n+1){
+		if(ans<sum) ans = sum;
+		return;
+	}
+	if(day>n+1) return;
+	go(day+1,sum);
+	go(day+t[day],sum+p[day]);
+}
 int main()
 {
-	dp[1]=1;
-	dp[2]=1;
-	dp[3]=1;
-	dp[4]=2;
-	dp[5]=2;
-	int t,n;
-	cin>>t;
-	for(int i=0;i<t;i++){
 	cin>>n;
-	for(int i=6;i<=n;i++){
-		dp[i] = dp[i-1]+dp[i-5];
+	for(int i=1;i<=n;i++){
+		cin>>t[i]>>p[i];
 	}
-	cout<<dp[n]<<endl; 
-	}
+	go(1,0);
+	cout<<ans<<'\n';
+	return 0;
 }
