@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 
-	int a,b,c,x,y;
+	unsigned long long int a,b,c,x,y;
 	cin>>a>>b>>c>>x>>y;
 	if(x>=y)
 	{
