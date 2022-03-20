@@ -51,7 +51,7 @@ int main()
 	mergeSort(arr,0,cnt-1);
 	for(i=0;i<cnt;i++)
 	{
-		cout<<arr[i]<<' ';
+		cout<<arr[i]<<'\n';
 	}
 	
 	

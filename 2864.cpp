@@ -1,30 +1,38 @@
 #include <iostream>
 #include <string>
 using namespace std;
-int num[10001];
+
 int main()
 {
-	int n,m;
-	cin>>n>>m;
-	int cnt=0;
-	unsigned long long int sum=0;
-	for(int i=n;i<=m;i++){
-		for(int j=1;j<=100;j++){
-			if(j*j==i){
-				num[cnt++]=i;
-				sum+=i;
-			}
-			if(j*j>n){
-				continue;
-			}
+	string str1;
+	string str2;
+	cin>>str1;
+	cin>>str2;
+
+	for(int i=0;i<str1.size();i++)
+	{
+		if(str1[i]=='6'){
+			str1[i]='5';
 		}
 	}
-	if(cnt==0){
-		cout<<-1<<endl;
-		return 0;
+	for(int i=0;i<str2.size();i++)
+	{
+		if(str2[i]=='6'){
+			str2[i]='5';
+		}
 	}
-	cout<<sum<<endl;
-	cout<<num[0]<<endl;
-	
-	
+	cout<<stoi(str1)+stoi(str2);
+		for(int i=0;i<str1.size();i++)
+	{
+		if(str1[i]=='5'){
+			str1[i]='6';
+		}
+	}
+	for(int i=0;i<str2.size();i++)
+	{
+		if(str2[i]=='5'){
+			str2[i]='6';
+		}
+	}
+	cout<<stoi(str1)+stoi(str2)<<' ';
 }
