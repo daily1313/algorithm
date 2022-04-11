@@ -1,45 +1,55 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <cmath>
-
+#include<iostream>
+#include<algorithm>
+#include<cmath>
+#include<vector>
 using namespace std;
 
-vector<int> V;
-int num[10001];
+int coordinate[500001];
+int cnt[8001];
+int N, a, b, c, d;
+int sum = 0;
 
-int main(){
-	int n;
-	cin>>n;
-	int size=n;
-	int sum=0;
-	int M,m;
-	m=4001;
-	M =-4001;
-	while(n--){
-		int a;
-		cin>>a;
-		sum+=a;
-		if(a<m)m=a;
-		if(a>M)M=a;
-		num[a+4000]++;
-		V.push_back(a);
+int main()
+{
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> coordinate[i];
+		sum += coordinate[i];
+		cnt[coordinate[i]+4000]++;
 	}
-	int result = *max_element(num,num+10001);
-	int rep;
-	int cnt=0;
-	for(int i=0;i<10001;i++){
-		if(cnt==2) break;
-		if(num[i]==result){
-			rep=i;
-			cnt++;
+	
+	sort(coordinate, coordinate + N);
+	
+	int flag;
+	int max = 0;
+	
+	for (int i = 0; i < 8001; i++)
+	{
+		if (cnt[i] > max)
+		{
+			max = cnt[i];
+			flag = i;
 		}
 	}
-	rep-=4000;
-	sort(V.begin(),V.end());
-	cout<<round((double)(sum/size))<<'\n';
-	cout<<V[size/2]<<'\n';
-	cout<<rep<<'\n';
-	cout<<M-m<<'\n';	
-	
+	//같을때, 두번째로 작은 최빈값 구하기 
+	for (int i = flag+1; i < 8001; i++)
+	{ 
+		if (cnt[i] == max)
+		{
+			flag = i;
+			break;
+		}
+	}
+
+	a = round(double(sum) / N);
+	b = coordinate[(N - 1) / 2];
+	c = flag - 4000;
+	d = coordinate[N - 1] - coordinate[0];
+
+	cout << a << "\n";
+	cout << b << "\n";
+	cout << c << "\n";
+	cout << d << "\n";
 }
