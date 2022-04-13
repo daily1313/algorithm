@@ -1,30 +1,38 @@
 #include <iostream>
 #include <cstring>
-char str[51][51];
+#include <algorithm>
 using namespace std;
+char arr[51][51];
 int main()
 {
 	int n,m;
 	cin>>n>>m;
 	for(int i=0;i<n;i++){
 		for(int j=0;j<m;j++){
-			cin>>str[i][j];
+			cin>>arr[i][j];
 		}
 	}
-	int cnt=0;
-	
+	int cntrow=0;
+	int check;
 	for(int i=0;i<n;i++){
-		int x=0;
+		check=0;
 		for(int j=0;j<m;j++){
-			if(str[i][j]=='X'){
-				x=1;
+			if(arr[i][j]=='X') check = 1;
+			if(j==m-1 && check ==0 && arr[i][j]=='.'){
+				cntrow++;
 			}
-			else if(x==0 && j==m-1){
-				if(str[i][j]!='X'){
-				cnt++;
-			}
+		}
+	} 
+	int cntcolumn=0;
+	for(int j=0;j<m;j++){
+		check=0;
+		for(int i=0;i<n;i++){
+			if(arr[i][j]=='X') check = 1;
+			if(i==n-1 && check ==0 && arr[i][j]=='.'){
+				cntcolumn++;
 			}
 		}
 	}
-	cout<<cnt<<'\n';
+	int result = max(cntrow,cntcolumn);
+	cout<<result<<'\n';
 }
