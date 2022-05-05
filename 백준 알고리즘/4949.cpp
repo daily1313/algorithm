@@ -1,45 +1,36 @@
 #include <iostream>
+#include <stack>
+#include <string>
 using namespace std;
-
 
 int main()
 {
-
-	unsigned long long int a,b,c,x,y;
-	cin>>a>>b>>c>>x>>y;
-	if(x>=y)
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	while(1)
 	{
-	if(a*y+b*y>=c*2*y){
-		if(c*2*x<a*x+b*x){
-			cout<<c*2*x<<'\n';
-			return 0;
-		}
-		else{
-		cout<<c*2*y+a*(x-y)<<'\n';
-		return 0;
-		}
+		string str;
+		getline(cin,str);
+		stack<char>s;
+		bool ans = true;
 		
-	}
-	else{
-		cout<<a*x+b*y<<'\n';
-		return 0;	
-	}
-	}
-	else{
-		if(a*x+b*x>=c*2*x){
-		if(c*2*y<a*y+b*y){
-			cout<<c*2*y<<'\n';
-			return 0;
+		if(str.length()==1 && str[0]=='.') break;
+		for(int i=0;i<str.length();i++){
+			if(str[i]=='(' || str[i]=='['){
+				s.push(str[i]);
+			}
+			if(str[i]==')'){
+				if(s.empty() ||s.top()=='[') ans = false;
+				else s.pop();
+			}
+			if(str[i]==']'){
+				if(s.empty() ||s.top()=='(') ans = false;
+				else s.pop();
+			}
 		}
-		else{
-		cout<<c*2*x+b*(y-x)<<'\n';
-		return 0;
-		}
-		return 0;
+		if(s.empty()&&ans) cout<<"yes"<<'\n';
+		else cout<<"no"<<'\n';
+	
 	}
-	else{
-		cout<<a*x+b*y<<'\n';
-		return 0;	
-	}
-	}
+	
 }
