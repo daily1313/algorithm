@@ -2,25 +2,37 @@
 #include <algorithm>
 #include <cstring>
 #include <vector>
+#include <deque>
 using namespace std;
 int main()
 {
 	int n;
 	cin>>n;
-	int m;
-	char a;
-	while(n--)
-	{
-		vector<char>v;
-		cin>>m;
-		for(int i=0;i<m;i++){
-			cin>>a;
-			v.push_back(a);
+	char a[1001];
+	for(int j=0;j<n;j++){
+	
+		deque<char>dq;
+		int t;
+		cin>>t;
+		for(int i=0;i<t;i++)
+		{
+			cin>>a[i];
+			if(i==0){
+				dq.push_back(a[0]);
+			}
+			else if(a[i]<=(dq.front())){
+				dq.push_front(a[i]);
+			}
+			else{
+				dq.push_back(a[i]);
+			}
+			
 		}
-		sort(v.begin(),v.end());
-		for(int j=0;j<v.size();j++){
-			cout<<v[j];
+		while(dq.size()!=0){
+			cout<<dq.front();
+			dq.pop_front();
 		}
 		cout<<'\n';
 	}
+	return 0;
 }
