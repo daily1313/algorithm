@@ -2,12 +2,13 @@
 #include <algorithm>
 #include <deque>
 #include <vector>
+#include <string>
 using namespace std;
-deque<char>d;
+
 int main()
 {
-	string str1,str2;
-	int cnt=0;
+		deque<char>d;
+		string str1,str2;
 		cin>>str1>>str2;
 		for(int i=0;i<str1.size();i++)
 		{

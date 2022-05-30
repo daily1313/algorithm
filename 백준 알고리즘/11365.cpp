@@ -22,6 +22,7 @@ int main()
 		{
 			cout<<*i;
 		}
+		cout<<'\n';
 		str.clear();
 	}
 	
