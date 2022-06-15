@@ -30,8 +30,9 @@ int main()
 	for(int i=p.size()-1;i>0;i-=2){
 		sum+=(p[i]*p[i-1]);
 	}
+	
 	for(int i=n.size()-1;i>0;i-=2){
 		sum+=(n[i]*n[i-1]);
 	}
-	cout<<sum<<'\n';
+	cout<<sum + one<<'\n';
 }
