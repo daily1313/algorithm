@@ -1,37 +1,51 @@
 #include <iostream>
+#include <cstring>
+#include <string>
 #include <algorithm>
-#include <map>
 #include <vector>
+#include <cstdio>
 using namespace std;
-bool cmp(vector<int> a, vector<int> b)
+bool cmp(string s1,string s2)
 {
-	return a[2]>b[2];
+	int sums1 = 0;
+	int sums2 = 0;
+	if(s1.size()==s2.size())
+	{
+		for(int i=0;i<s1.size();i++)
+		{
+			if(s1[i]>='0' && s1[i]<='9')
+			{
+				sums1 += (s1[i] - '0');
+			}
+			if(s2[i]>='0' && s2[i]<='9')
+			{
+				sums2 += (s2[i] - '0');
+			}
+		}
+		if(sums2==sums1){
+			return s1<s2;
+		}
+		else{
+			return sums1<sums2;
+		}
+	}
+	else return s1.size()<s2.size();
 }
 int main()
 {
 	int n;
 	cin>>n;
-	vector<vector<int>>v(n,vector<int>(n,0));
+	string str;
+	vector<string>v;
 	for(int i=0;i<n;i++)
 	{
-		for(int j=0;j<n;j++)
-		{
-			cin>>v[i][j];
-		}
-		sort(v[i].begin(),v[i].end());	
+		cin>>str;
+		v.push_back(str);
 	}
-	
+	sort(v.begin(),v.end(),cmp);
 	for(int i=0;i<n;i++)
 	{
-		for(int j=0;j<n;j++)
-		{
-			cout<<v[i][j]<<' ';
-		}
-		cout<<'\n';
+		cout<<v[i]<<'\n';
 	}
-	
-	
-	
-	
 	
 }

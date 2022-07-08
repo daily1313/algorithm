@@ -1,39 +1,21 @@
+#include <vector>
+#include <algorithm>
 #include <iostream>
-#include <queue>
+#include <functional>
 using namespace std;
 
 int main()
 {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 	int n;
 	cin>>n;
-	priority_queue<int>pq;
-	for(int i=0;i<n;i++)
-	{
-		for(int j=0;j<n;j++)
-		{
-			int num;
-			cin>>num;
-			pq.push(num);
-		}
-	}
-	int cnt=1;
+	vector<int>v(n*n);
 	for(int i=0;i<n*n;i++)
 	{
-			if(cnt==n){
-				break;
-			}
-			pq.pop();
-			cnt++;
+		cin>>v[i];
+		
 	}
-	for (int i = 1; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            int data;
-            cin >> data;
-            pq.push(data);
-        }
-        for (int i = 0; i < n; i++)pq.pop();
-    }
-    cout << pq.top();
-    return 0;
-	cout<<pq.top()<<'\n';
+	sort(v.begin(),v.end(),greater<int>());
+	cout<<v[n-1]<<'\n';
 }
