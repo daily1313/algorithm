@@ -1,41 +1,31 @@
 #include <iostream>
-#include <utility>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
+#include <set>
 using namespace std;
 
 int main()
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
-	int t,a[20001],b[20001];
-	cin>>t;
-	int n,m;
-	while(t--)
+	int n;
+	cin>>n;
+	vector<int>v;
+	vector<int>v2;
+	for(int i=0;i<n;i++)
 	{
-		int cnt=0;
-		cin>>n>>m;
-		for(int i=0;i<n;i++)
-		{
-			cin>>a[i];
-		}
-		for(int i=0;i<m;i++){
-			cin>>b[i];
-		}
-		sort(a,a+n);
-		sort(b,b+m);
-		for(int i=n-1;i>=0;i--)
-		{
-			for(int j=m-1;j>=0;j--)
-			{
-				if(a[i]-b[j]>0) cnt++;
-				
-			} 
-			
-		}
-		cout<<cnt<<'\n';
+		int num;
+		cin>>num;
+		v.push_back(num);
+		v2.push_back(num);
 	}
-
+	sort(v2.begin(),v2.end());
+	v2.erase(unique(v2.begin(),v2.end()),v2.end());
+	for(int i=0;i<v.size();i++)
+	{
+		cout<<lower_bound(v2.begin(),v2.end(),v[i])-v2.begin()<<' ';
+	}
 	
+
 	
 }
