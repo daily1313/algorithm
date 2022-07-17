@@ -8,23 +8,30 @@ int main()
 	cin.tie(NULL);
 	int t;
 	cin>>t;
+	
 	while(t--){
 		string str;
 		getline(cin,str);
 		stack<char>s;
 		int i;
 		for(char ch : str){
-			if(ch==' '|| ch=='\n'){
+			if(ch==' '){
 				while(!s.empty()){
 					cout<<s.top();
 					s.pop();				
 				}
 				cout<<ch;
-			}else{
+			}
+			else if(ch=='\n'){
+				while(!s.empty()){
+					cout<<s.top();
+					s.pop();				
+				}
+			}
+			else{
 				s.push(ch);
 			}
 			
 		}
 	} 
 }
-
