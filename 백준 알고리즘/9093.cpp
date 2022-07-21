@@ -8,7 +8,7 @@ int main()
 	cin.tie(NULL);
 	int t;
 	cin>>t;
-	
+	cin.ignore();
 	while(t--){
 		string str;
 		getline(cin,str);

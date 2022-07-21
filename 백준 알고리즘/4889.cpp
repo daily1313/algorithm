@@ -13,7 +13,7 @@ int main()
 	while(cin>>s)
 	{
 		int cnt=0;
-		if(s=="---") break;
+		if(s[0]=='-') break;
 			for(int i=0;i<s.size();i++)
 			{
 				if(s[i]=='{') st.push(s[i]);
