@@ -1,41 +1,40 @@
 #include <iostream>
-#include <cstring>
+#include <vector>
+#include <algorithm>
+#include <string>
 using namespace std;
-char a[100001];
-char b[100001];
+
 int main()
 {
 	int n;
-	cin>>n;
-	for(int i=0;i<n;i++){
-		int t;
-		cin>>t;
-		int cnt=0;
-		for(int j=0;j<t;j++)
+	vector<char>v1;
+	vector<char>v2;
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		cin>>n;
+		int bwcnt=0;
+		int wbcnt=0;
+		for(int i=0;i<n;i++)
 		{
-			cin>>a[j];
+			char a;
+			cin>>a;
+			v1.push_back(a);
 		}
-		for(int j=0;j<t;j++)
+			for(int i=0;i<n;i++)
 		{
-			cin>>b[j];
+			char b;
+			cin>>b;
+			v2.push_back(b);
 		}
-		for(int k=0;k<t;k++){
-			if(a[k]==b[k]){
-				continue;
-			}
-			else{
-				if(a[k+1]==b[k+1]){
-					cnt+=1;
-					continue;
-				}
-				else{
-					k+=1;
-					cnt+=1;
-					continue;
-				}
-			}
+		for(int i=0;i<v1.size();i++)
+		{
+			if(v1[i]=='B' && v2[i]=='W') bwcnt+=1;
+			else if(v1[i]=='W' && v2[i]=='B') wbcnt+=1;
 		}
-		cout<<cnt<<'\n';
-		
+		cout<<max(bwcnt,wbcnt)<<'\n';
+		v1.clear();
+		v2.clear();
 	}
 }

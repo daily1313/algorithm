@@ -23,7 +23,7 @@ int main()
 		v.push_back(make_pair(p,a));
 	}
 	
-	int result = v[0].first;
+	
 	int ans1 = 0;
 	int ans2 = 0;
 	int cnt=0;
@@ -31,6 +31,7 @@ int main()
 	if(n<6) 
 	{
 		sort(v.begin(),v.end(),cmp); // 패키지를 기준으로 오름차순 정렬 
+		int result = v[0].first;
 		for(int i=0;i<m;i++)
 		{
 			if(v[i].second*n<result) //(낱개 * 개수)의 가격  < 패키지의 가격 

@@ -19,7 +19,6 @@ int main()
 	}
 	result.push(pq.top().second);
 	pq.pop();
-	cout<<result.top();
 	while(!pq.empty())
 	{
 		if(result.top()<=pq.top().first)

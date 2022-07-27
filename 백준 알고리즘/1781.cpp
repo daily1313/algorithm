@@ -5,23 +5,20 @@
 #include <tuple>
 #include <queue>
 using namespace std;
-bool cmp(pair<int,int>p1,pair<int,int>p2)
-{
-	return p1.second>p2.second;
-}
+
 int main()
 {
 	int n;
 	cin>>n;
 	vector<pair<int,int>>v;
-	priority_queue<int>pq;
+	priority_queue<int,vector<int>,greater<int>>pq;
 	for(int i=0;i<n;i++)
 	{
 		int a,b;
 		cin>>a>>b;
 		v.push_back(make_pair(a,b));
 	}
-	sort(v.begin(),v.end(),cmp);
+	sort(v.begin(),v.end());
 	long long sum = 0;
 
 	for(int i=0;i<n;i++)
