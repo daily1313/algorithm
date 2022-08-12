@@ -36,7 +36,7 @@ int main()
 			for(int i=0;i<8;i++){
 				int sr = xy.first + mov[i][0];
 				int sc = xy.second + mov[i][1];
-				if(sr<0 || sc<0 || sr>l || sc>l ) continue;
+				if(sr<0 || sc<0 || sr>l-1 || sc>l-1 ) continue;
 				if(visited[sr][sc] ) continue;
 				if(!visited[sr][sc])
 				{
@@ -46,10 +46,6 @@ int main()
 				}
 			}
 		
-		}
-		
-		
-		
-		
+		}	
 	}
 }
