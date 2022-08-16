@@ -38,6 +38,10 @@ int main()
 		board[a][b] = board[b][a] = 1;		
 	}
 	bfs(x);
-	if(!cnt[y]) cout<<-1;
+	
+	if(!cnt[y]){
+	cout<<-1;
+	return 0;
+	}
 	cout<<cnt[y];
 }
