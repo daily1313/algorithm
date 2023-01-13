@@ -52,6 +52,7 @@ void dfs(int x,int y)
 
         if(r>=0 && c>=0 && r<n && c<n && !visited[r][c] && board[x][y]==board[r][c])
         {
+            visited[r][c] = true;
             dfs(r,c);
         }
     }
