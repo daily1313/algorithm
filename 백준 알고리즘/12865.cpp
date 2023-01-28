@@ -8,9 +8,9 @@ using namespace std;
 
 int main()
 {
-    int d[101][100001];
+    int d[101][101];
     int v[101];
-    int w[100001];
+    int w[101];
     int n, k;
     cin >> n >> k;
     for (int i = 1; i <= n; i++)
@@ -25,9 +25,11 @@ int main()
             d[i][j] = d[i - 1][j];
             if (j - w[i] >= 0)
             {
-                d[i][j] = max(d[i][j], d[i - 1][j - w[i]] + v[i]);
+                d[i][j] = max(d[i][j], d[i - 1][j - w[i]] + v[i]);  
             }
+            cout<< d[i][j]<< ' ';
         }
+        cout<<'\n';
     }
     cout << d[n][k] << '\n';
 }
