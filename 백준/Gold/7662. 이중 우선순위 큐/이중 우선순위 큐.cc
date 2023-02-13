@@ -1,52 +1,55 @@
 #include <iostream>
-#include <map>
-#include <queue>
+#include <set>
+
 using namespace std;
-int T, Q;
-typedef long long ll;
+
 int main()
 {
-	cin >> T;
-	while (T--) {
-		cin >> Q;
-		priority_queue<ll, vector<ll>, greater<ll>> min_q;
-		priority_queue<ll, vector<ll>, less<ll>> max_q;
-		map<ll, ll> freq;
-		char op;
-		ll num;
-		while (Q--) {
-			cin >> op >> num;
-			if (op == 'I') {
-				max_q.push(num);
-				min_q.push(num);
-				freq[num]++;
-			}
-			else if (num == 1) {
-				while (!max_q.empty() && freq[max_q.top()] == 0) 
-					max_q.pop();
-				
-				if (!max_q.empty()) {
-					freq[max_q.top()]--;
-					max_q.pop();
-				}
-			}
-			else {
-				while (!min_q.empty() && freq[min_q.top()] == 0) 
-					min_q.pop();
-				
-				if (!min_q.empty()) {
-					freq[min_q.top()]--;
-					min_q.pop();
-				}
-			}
-		}
-		while (!max_q.empty() && freq[max_q.top()] == 0)
-			max_q.pop();
-		while (!min_q.empty() && freq[min_q.top()] == 0)
-			min_q.pop();
-		if (min_q.empty())
-			cout << "EMPTY\n";
-		else
-			cout << max_q.top() << " " << min_q.top() << "\n";
-	}
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int t;
+    cin >> t;
+
+    int n;
+    while (t--)
+    {
+        cin >> n;
+        char input;
+        int num;
+        multiset<int> ms;
+        while (n--)
+        {
+            cin >> input >> num;
+            if (input == 'I')
+            {
+                ms.insert(num);
+            }
+            else
+            {
+                if (!ms.empty() && num == -1)
+                {
+                    ms.erase(ms.begin());
+                }
+                else if (!ms.empty() && num == 1)
+                {
+                    auto iter = ms.end();
+                    iter--;
+                    ms.erase(iter);
+                }
+            }
+        }
+        if (ms.empty())
+        {
+            cout << "EMPTY" << '\n';
+        }
+        else
+        {
+            auto end_iter = ms.end();
+            end_iter--;
+            cout << *end_iter << ' ' << *ms.begin() << '\n';
+        }
+    }
+    return 0;
 }
