@@ -15,17 +15,17 @@ void dijkstra(int start) {
 
     while(!pq.empty())
     {
-        int dist = pq.top().first;
-        int now = pq.top().second;
-        pq.pop();
-        if(d[now] < dist) continue;
+        int dist = pq.top().first; // 현재 노드까지의 거리
+        int now = pq.top().second; // 현재 노드 번호
+        pq.pop(); // priority_queue에서 꺼낸 노드 제거
+        if(d[now] < dist) continue; // 이미 처리된 노드인 경우는 스킵
 
         for(int i=0;i<graph[now].size();i++)
         {
-            int cost = dist + graph[now][i].second;
-            int next = graph[now][i].first;
-            int next_cost = d[next];
-            if(cost < d[next]) {
+            int cost = dist + graph[now][i].second; // 현재까지의 비용 + 현재 노드 ~ 다음 노드 간의 가중치(weight)
+            int next = graph[now][i].first; // 다음 노드 번호
+            int next_cost = d[next]; // 이전까지의 최단 거리
+            if(cost < d[next]) { // 다음 노드까지의 거리가 더 짧다면 최단 거리를 업데이트하고 priority_queue에 삽입
                 d[next] = cost;
                 pq.push({cost, next});
             }
@@ -41,7 +41,7 @@ int main()
     {
         d[i] = INF;
     }
-    
+
     for(int i=0;i<m;i++)
     {
         int a, b, c;
