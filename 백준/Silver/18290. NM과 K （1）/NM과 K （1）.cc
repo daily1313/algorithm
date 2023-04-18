@@ -3,7 +3,7 @@
 using namespace std;
 int mov[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
 int n, m, k;
-bool check[11][11];
+bool visited[11][11];
 int map[11][11];
 int ans = -2e9;
 void dfs(int idx, int sum)
@@ -17,27 +17,18 @@ void dfs(int idx, int sum)
     {
         for(int j=0;j<m;j++)
         {
-            if(check[i][j]) continue;
-            bool ok = true;
-            for(int k=0;k<4;k++)
+            if(visited[i][j]) continue;
+            if(visited[i-1][j] || visited[i][j+1] || visited[i][j-1] || visited[i+1][j])
             {
-                int r = i + mov[k][0];
-                int c = j + mov[k][1];
-
-                if(r>=0 && r<n && c>=0 && c<m)
-                {
-                    if(check[r][c]) ok = false;
-                }
+                continue;
             }
-            if(ok) 
-            {
-                check[i][j] = true;
+                visited[i][j] = true;
                 dfs(idx + 1, sum + map[i][j]);
-                check[i][j] = false;
+                visited[i][j] = false;
             }
         }
-    }
 }
+
 
 int main()
 {
